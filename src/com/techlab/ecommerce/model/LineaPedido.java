@@ -10,10 +10,10 @@ public class LineaPedido {
     public LineaPedido() {
     }
 
-    public LineaPedido(Producto producto, int cantidad, double precioUnitario) {
+    public LineaPedido(Producto producto, int cantidad) {
         this.producto = producto;
         this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
+        this.precioUnitario = producto.getPrecio();
     }
 
     /// Getters
@@ -50,16 +50,21 @@ public class LineaPedido {
         this.precioUnitario = precioUnitario;
     }
 
+    public double calcularSubtotal() {
+        return precioUnitario * cantidad;
+    }
+
     /// Override
     @Override
     public String toString() {
         return String.format(
-                "│ %-4d │ %-24s │ %-19s │ $%10.2f │ %-5d │",
+                "│ %-4d │ %-20s │ %-15s │ $%10.2f │ %-5d │ $%8.2f |",
                 id,
                 producto.getNombre(),
                 producto.getCategoria(),
                 precioUnitario,
-                cantidad);
+                cantidad,
+                calcularSubtotal());
     }
 
 }
