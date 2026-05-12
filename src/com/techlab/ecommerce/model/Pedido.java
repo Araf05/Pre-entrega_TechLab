@@ -2,7 +2,6 @@ package com.techlab.ecommerce.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 public class Pedido {
@@ -57,8 +56,16 @@ public class Pedido {
     /// Override
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Pedido #").append(id).append("\n");
+        sb.append("Fecha: ").append(fecha).append("\n");
+        for (LineaPedido linea : lineasPedido) {
+            sb.append(linea).append("\n");
+        }
+        sb.append("TOTAL: $").append(costoTotal);
+
+        return sb.toString();
     }
 
 }
