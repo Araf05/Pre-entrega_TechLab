@@ -24,15 +24,15 @@ public class PedidoService {
         return p;
     }
 
-    public LineaPedido agregarProducto(Pedido pedido, Producto producto, int cantidad) {
-        Validador.validarCantidad(cantidad);
-        Validador.validarStockPedido(producto.getStock(), cantidad);
+    public LineaPedido creaLineaPedido(Pedido pedido, LineaPedido linea) {
+        Validador.validarCantidad(linea.getCantidad());
+        Validador.validarStockPedido(linea.getProducto().getStock(), linea.getCantidad());
 
-        producto.setStock(producto.getStock() - cantidad);
+        linea.getProducto().setStock(
+            linea.getProducto().getStock() - linea.getCantidad()
+        );
 
-        LineaPedido linea = new LineaPedido(producto, cantidad);
         linea.setId(contadorLineasPedido++);
-
         pedido.agregarLinea(linea);
 
         return linea;

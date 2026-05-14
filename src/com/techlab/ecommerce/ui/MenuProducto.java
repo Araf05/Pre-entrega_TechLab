@@ -25,9 +25,9 @@ public class MenuProducto {
                         "║   [3]  Actualizar producto                                     ║\n" +
                         "║   [4]  Eliminar producto                                       ║\n" +
                         "║   [5]  Buscar producto por id                                  ║\n" +
-                        // "║ [6] Listar pedidos ║\n" +
+                        "║   [6]  Menu pedidos                                            ║\n" +
                         "║                                                                ║\n" +
-                        "║   [6]  Salir                                                   ║\n" +
+                        "║   [7]  Salir                                                   ║\n" +
                         "║                                                                ║\n" +
                         "╚════════════════════════════════════════════════════════════════╝\n");
     }
@@ -54,8 +54,10 @@ public class MenuProducto {
 
     public void buscarProducto() {
         int id = Validador.leerEntero(sc, "Ingrese el id del producto: ");
+        Producto p = service.buscarPorId(id);
+        
         System.out.println("[OK] Producto encontrado: ");
-        System.out.println(service.buscarPorId(id));
+        System.out.println(p);
     }
 
     public void actualizarProducto() {
