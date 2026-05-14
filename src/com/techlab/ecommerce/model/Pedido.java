@@ -45,6 +45,11 @@ public class Pedido {
         recalcularTotal();
     }
 
+    public void quitarLinea(LineaPedido linea) {
+        this.lineasPedido.remove(linea);
+        recalcularTotal();
+    }
+
     private void recalcularTotal() {
         costoTotal = 0;
 

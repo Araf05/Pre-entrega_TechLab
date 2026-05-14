@@ -9,7 +9,7 @@ import com.techlab.ecommerce.model.Producto;
 import com.techlab.ecommerce.ui.MenuProducto;
 import com.techlab.ecommerce.util.Validador;
 
-public class Menu {
+public class Main {
     public static void main(String[] args) throws Exception {
         ProductoService service = new ProductoService();
         Scanner sc = new Scanner(System.in);

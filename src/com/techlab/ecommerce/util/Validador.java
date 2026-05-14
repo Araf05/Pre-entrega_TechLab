@@ -3,6 +3,7 @@ package com.techlab.ecommerce.util;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import com.techlab.ecommerce.exception.StockInsufiecienteException;
+import com.techlab.ecommerce.model.Pedido;
 
 public class Validador {
 
@@ -28,6 +29,25 @@ public class Validador {
     public static void validarCategoria(String categoria) {
         if (categoria == null || categoria.trim().isEmpty()) {
             throw new IllegalArgumentException("[ERROR] La categoría no puede estar vacia.");
+        }
+    }
+
+    /// Validación de valores de nuevos Pedidos
+    public static void validarCantidad(int cantidad) {
+        if (cantidad <= 0) {
+            throw new IllegalArgumentException("[ERROR] La cantidad no puede ser negativa.");
+        }
+    }
+
+    public static void validarStockPedido(int stock, int cantidad) {
+        if (stock < cantidad) {
+            throw new StockInsufiecienteException("[ERROR] El stock es insuficiente.");
+        }
+    }
+
+    public static void validarPedido(Pedido pedido) {
+        if(pedido.getLineasPedido().isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] El pedido no puede estar vacío");
         }
     }
 
