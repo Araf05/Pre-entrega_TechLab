@@ -9,8 +9,8 @@ public class Validador {
 
     /// Validacion de valores de nuevos Productos
     public static void validarNombre(String nombre) {
-        if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("\n[ERROR] El nombre no puede estar vacio.\n");
+        if (nombre == null) {
+            throw new IllegalArgumentException("\n[ERROR] El nombre no puede ser null.\n");
         }
     }
 
@@ -27,15 +27,15 @@ public class Validador {
     }
 
     public static void validarCategoria(String categoria) {
-        if (categoria == null || categoria.trim().isEmpty()) {
-            throw new IllegalArgumentException("\n[ERROR] La categoría no puede estar vacia.\n");
+        if (categoria == null) {
+            throw new IllegalArgumentException("\n[ERROR] La categoría no puede ser null.\n");
         }
     }
 
     /// Validación de valores de nuevos Pedidos
     public static void validarCantidad(int cantidad) {
         if (cantidad <= 0) {
-            throw new IllegalArgumentException("\n[ERROR] La cantidad no puede ser negativa.\n");
+            throw new IllegalArgumentException("\n[ERROR] La cantidad debe ser mayor a cero.\n");
         }
     }
 
@@ -46,8 +46,8 @@ public class Validador {
     }
 
     public static void validarPedido(Pedido pedido) {
-        if(pedido.getLineasPedido().isEmpty()) {
-            throw new IllegalArgumentException("\n[ERROR] El pedido no puede estar vacío\n");
+        if (pedido.getLineasPedido().isEmpty()) {
+            throw new IllegalArgumentException("\n[ERROR] El pedido no puede estar vacío.\n");
         }
     }
 
@@ -81,14 +81,39 @@ public class Validador {
     }
 
     public static String leerTexto(Scanner sc, String mensaje) {
-        System.out.println(mensaje);
-        return sc.nextLine();
+        while (true) {
+            System.out.println(mensaje);
+            String texto = sc.nextLine().trim();
+
+            if (texto.isEmpty()) {
+                System.out.println("\n[ERROR] El campo no puede estar vacío. Vuelva a intentar.\n");
+                continue;
+            }
+
+            texto = formatearTexto(texto);
+
+            return texto;
+        }
+    }
+
+    public static String formatearTexto(String texto) {
+        texto = texto.trim().toLowerCase();
+        String[] palabras = texto.split(" ");
+
+        StringBuilder sb = new StringBuilder();
+        for (String palabra : palabras) {
+            if (!palabra.isEmpty()) {
+                sb.append(Character.toUpperCase(palabra.charAt(0))).append(palabra.substring(1)).append("");
+            }
+        }
+        return sb.toString().trim();
     }
 
     public static boolean confirmar(Scanner sc, String mensaje) {
         while (true) {
             System.out.println(mensaje);
             int respuesta = sc.nextInt();
+            sc.nextLine();
             if (respuesta == 1) {
                 return true;
             }
