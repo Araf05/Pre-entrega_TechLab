@@ -66,7 +66,7 @@ Ejecución local
   1. Clona este repositorio en tu máquina local:
 
 ```bash
-git clone [https://github.com/Araf05/Pre-entrega_TechLab.git](https://github.com/Araf05/Pre-entrega_TechLab.git)
+git clone https://github.com/Araf05/Pre-entrega_TechLab.git
 ```
   2. Navega al directorio raíz del proyecto.
   3. Compila y ejecuta la clase `Main.java`:
