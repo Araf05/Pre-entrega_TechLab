@@ -4,6 +4,8 @@
 
 Un sistema de consola robusto desarrollado en Java para la gestión de productos y procesamiento de pedidos en un entorno de comercio electrónico. El proyecto implementa principios de Programación Orientada a Objetos (POO), manejo de excepciones personalizadas, validación de datos implacable y una arquitectura basada en capas (Model-Service-UI).
 
+<img width="392" height="229" alt="image" src="https://github.com/user-attachments/assets/2c5822d0-0f60-48d2-a068-29850e0549b2" />
+
 ---
 ## Tecnologías
 *    **IDE:** Visual Studio Code
