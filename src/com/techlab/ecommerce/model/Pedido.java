@@ -63,7 +63,7 @@ public class Pedido {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("Pedido #").append(id).append("\n");
+        sb.append("\nPedido #").append(id).append("\n");
         sb.append("Fecha: ").append(fecha).append("\n");
         for (LineaPedido linea : lineasPedido) {
             sb.append(linea).append("\n");

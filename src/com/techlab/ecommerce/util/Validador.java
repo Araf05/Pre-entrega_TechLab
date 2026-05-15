@@ -10,44 +10,44 @@ public class Validador {
     /// Validacion de valores de nuevos Productos
     public static void validarNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] El nombre no puede estar vacio.");
+            throw new IllegalArgumentException("\n[ERROR] El nombre no puede estar vacio.\n");
         }
     }
 
     public static void validarStock(int stock) {
         if (stock < 0) {
-            throw new StockInsufiecienteException("[ERROR] El stock no puede ser negativo.");
+            throw new StockInsufiecienteException("\n[ERROR] El stock no puede ser negativo.\n");
         }
     }
 
     public static void validarPrecio(double precio) {
         if (precio < 0) {
-            throw new IllegalArgumentException("[ERROR] El precio no puede ser negativo.");
+            throw new IllegalArgumentException("\n[ERROR] El precio no puede ser negativo.\n");
         }
     }
 
     public static void validarCategoria(String categoria) {
         if (categoria == null || categoria.trim().isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] La categoría no puede estar vacia.");
+            throw new IllegalArgumentException("\n[ERROR] La categoría no puede estar vacia.\n");
         }
     }
 
     /// Validación de valores de nuevos Pedidos
     public static void validarCantidad(int cantidad) {
         if (cantidad <= 0) {
-            throw new IllegalArgumentException("[ERROR] La cantidad no puede ser negativa.");
+            throw new IllegalArgumentException("\n[ERROR] La cantidad no puede ser negativa.\n");
         }
     }
 
     public static void validarStockPedido(int stock, int cantidad) {
         if (stock < cantidad) {
-            throw new StockInsufiecienteException("[ERROR] El stock es insuficiente.");
+            throw new StockInsufiecienteException("\n[ERROR] El stock es insuficiente.\n");
         }
     }
 
     public static void validarPedido(Pedido pedido) {
         if(pedido.getLineasPedido().isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] El pedido no puede estar vacío");
+            throw new IllegalArgumentException("\n[ERROR] El pedido no puede estar vacío\n");
         }
     }
 
@@ -60,7 +60,7 @@ public class Validador {
                 sc.nextLine();
                 return valor;
             } catch (InputMismatchException e) {
-                System.out.println("[ERROR] Debe ingresar un número entero. Intente nuevamente.");
+                System.out.println("\n[ERROR] Debe ingresar un número entero. Intente nuevamente.\n");
                 sc.nextLine();
             }
         }
@@ -74,7 +74,7 @@ public class Validador {
                 sc.nextLine();
                 return valor;
             } catch (InputMismatchException e) {
-                System.out.println("[ERROR] Debe ingresar un número decimal. Intente nuevamente.");
+                System.out.println("\n[ERROR] Debe ingresar un número decimal. Intente nuevamente.\n");
                 sc.nextLine();
             }
         }
@@ -97,7 +97,7 @@ public class Validador {
                 return false;
             }
 
-            System.out.println("[ERROR] Ingrese una opción válida.");
+            System.out.println("\n[ERROR] Ingrese una opción válida.\n");
         }
     }
 

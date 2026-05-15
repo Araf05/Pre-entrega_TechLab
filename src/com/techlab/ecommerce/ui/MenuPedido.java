@@ -31,26 +31,26 @@ public class MenuPedido {
 
         pedidoService.creaLineaPedido(pedido, linea);
 
-        System.out.println("[OK] Producto agregado al carrito.");
+        System.out.println("\n[OK] Producto agregado al carrito.\n");
         System.out.println(linea);
     }
 
     public void crearPedido() {
         Pedido pedido = new Pedido();
-        int cantidadLineas = Validador.leerEntero(sc, "Ingrese la cantidad de Productos del Pedido: ");
+        int cantidadLineas = Validador.leerEntero(sc, "\nIngrese la cantidad de Productos del Pedido: ");
 
         for (int i = 0; i < cantidadLineas; i++) {
-            System.out.println("Producto #" + (i + 1));
+            System.out.println("\nProducto #" + (i + 1));
             agregarProducto(pedido);
         }
 
         pedidoService.registrarPedido(pedido);
-        System.out.println("[OK] Tu pedido ha sido creado.");
+        System.out.println("\n[OK] Tu pedido ha sido creado.\n");
         System.out.println(pedido);
     }
 
     public void mostrarPedidos() {
-        System.out.println("Listado de pedidos: ");
+        System.out.println("\nListado de pedidos: ");
         for (Pedido p : pedidoService.listarPedidos()) {
             System.out.println(p);
         }
@@ -59,7 +59,7 @@ public class MenuPedido {
     public void buscarPorId() {
         int id = Validador.leerEntero(sc, "Ingrese el id del pedido: ");
         Pedido p = pedidoService.buscarPedidoId(id);
-        System.out.println("[OK] Pedido encontrado: ");
+        System.out.println("\n[OK] Pedido encontrado: \n");
         System.out.println(p);
     }
 

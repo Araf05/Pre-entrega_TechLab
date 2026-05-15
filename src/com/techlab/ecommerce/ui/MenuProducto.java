@@ -36,18 +36,18 @@ public class MenuProducto {
     public void agregarProducto() {
         Producto p = new Producto();
 
-        p.setNombre(Validador.leerTexto(sc, "Ingrese el nombre del producto: "));
+        p.setNombre(Validador.leerTexto(sc, "\nIngrese el nombre del producto: "));
         p.setStock(Validador.leerEntero(sc, "Ingrese el stock del producto: "));
         p.setCategoria(Validador.leerTexto(sc, "Ingrese la categoría del producto: "));
         p.setPrecio(Validador.leerDouble(sc, "Ingrese el precio del producto: "));
 
         p = service.creaProducto(p);
-        System.out.println("[OK] Producto agregado exitosamente.");
+        System.out.println("\n[OK] Producto agregado exitosamente.\n");
         System.out.println(p);
     }
 
     public void mostrarProductos() {
-        System.out.println("Listado de productos: ");
+        System.out.println("\nListado de productos: ");
         for (Producto p : service.leerTodos()) {
             System.out.println(p);
         }
@@ -57,7 +57,7 @@ public class MenuProducto {
         int id = Validador.leerEntero(sc, "Ingrese el id del producto: ");
         Producto p = service.buscarPorId(id);
 
-        System.out.println("[OK] Producto encontrado: ");
+        System.out.println("\n[OK] Producto encontrado: ");
         System.out.println(p);
     }
 
@@ -70,7 +70,7 @@ public class MenuProducto {
         p.setCategoria(Validador.leerTexto(sc, "Ingrese la categoría del producto: "));
         p.setPrecio(Validador.leerDouble(sc, "Ingrese el precio del producto: "));
 
-        System.out.println("[OK] Producto actualizado exitosamente.");
+        System.out.println("\n[OK] Producto actualizado exitosamente.\n");
         System.out.println(service.actualizar(id, p));
 
     }
@@ -79,16 +79,16 @@ public class MenuProducto {
         int id = Validador.leerEntero(sc, "Ingrese el id del producto a eliminar: ");
 
         boolean confirmar = Validador.confirmar(sc,
-                "El producto se eliminará definitivamente. ¿Desea continuar?\n" +
+                "\nEl producto se eliminará definitivamente. ¿Desea continuar?\n" +
                         "[1] Continuar \n" +
                         "[0] Cancelar \n" +
                         "\nSeleccione una opción: ");
 
         if (confirmar) {
             service.eliminar(id);
-            System.out.println("\n[OK] El producto ha sido eliminado.");
+            System.out.println("\n[OK] El producto ha sido eliminado.\n");
         } else {
-            System.out.println("\n[CANCELADO] Operación cancelada por el usuario.");
+            System.out.println("\n[CANCELADO] Operación cancelada por el usuario.\n");
         }
 
     }
