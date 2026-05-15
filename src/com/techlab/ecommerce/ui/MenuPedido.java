@@ -3,6 +3,7 @@ package com.techlab.ecommerce.ui;
 import java.util.Scanner;
 
 import com.techlab.ecommerce.model.Pedido;
+import com.techlab.ecommerce.model.Producto;
 import com.techlab.ecommerce.model.LineaPedido;
 import com.techlab.ecommerce.service.PedidoService;
 import com.techlab.ecommerce.service.ProductoService;
@@ -19,30 +20,14 @@ public class MenuPedido {
         this.productoService = productoService;
     }
 
-    public void mostrarMenu() {
-        System.out.printf(
-                "╔════════════════════════════════════════════════════════════════╗\n" +
-                        "║                     SISTEMA DE GESTIÓN - TECHLAB               ║\n" +
-                        "╠════════════════════════════════════════════════════════════════╣\n" +
-                        "║                                                                ║\n" +
-                        "║   [1]  Crear Pedido                                            ║\n" +
-                        "║   [2]  Listar Pedidos                                          ║\n" +
-                        "║   [3]  Buscar Pedido por Id                                    ║\n" +
-                        "║                                                                ║\n" +
-                        "║   [6]  Volver al Menu de Productos                             ║\n" +
-                        "║   [7]  Salir                                                   ║\n" +
-                        "║                                                                ║\n" +
-                        "╚════════════════════════════════════════════════════════════════╝\n");
-    }
-
     private void agregarProducto(Pedido pedido) {
-        LineaPedido linea = new LineaPedido();
-
-        linea.setProducto(
+        Producto p = (
                 productoService.buscarPorId(
                         Validador.leerEntero(sc, "Ingrese el id del producto: ")));
 
-        linea.setCantidad(Validador.leerEntero(sc, "Ingrese la cantidad que desea: "));
+        int cantidad = (Validador.leerEntero(sc, "Ingrese la cantidad que desea: "));
+
+        LineaPedido linea = new LineaPedido(p, cantidad);
 
         pedidoService.creaLineaPedido(pedido, linea);
 
@@ -54,13 +39,14 @@ public class MenuPedido {
         Pedido pedido = new Pedido();
         int cantidadLineas = Validador.leerEntero(sc, "Ingrese la cantidad de Productos del Pedido: ");
 
-        for (int i = 0; i <= cantidadLineas; i++) {
+        for (int i = 0; i < cantidadLineas; i++) {
             System.out.println("Producto #" + (i + 1));
             agregarProducto(pedido);
         }
 
         pedidoService.registrarPedido(pedido);
         System.out.println("[OK] Tu pedido ha sido creado.");
+        System.out.println(pedido);
     }
 
     public void mostrarPedidos() {
