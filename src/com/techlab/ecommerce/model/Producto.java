@@ -12,10 +12,10 @@ public class Producto {
     }
 
     public Producto(String nombre, int stock, String categoria, double precio) {
-        this.setNombre(nombre);
-        this.setCategoria(categoria);
-        this.setPrecio(precio);
-        this.setStock(stock);
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.precio = precio;
+        this.stock = stock;
     }
 
     /// Getters

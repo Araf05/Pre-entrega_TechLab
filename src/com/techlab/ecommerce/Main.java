@@ -55,8 +55,8 @@ public class Main {
     public static void cargarDatosDePrueba(ProductoService service) {
         service.creaProducto(new Producto("Cafe", 30, "Bebidas", 3500.00));
         service.creaProducto(new Producto("Queso Cremoso", 200, "Lacteos", 4500.50));
-        service.creaProducto(new Producto("Banana", 100, "Verdulería", 1500.00));
-        service.creaProducto(new Producto("Shampoo", 400, "Perfumería", 5600.00));
+        service.creaProducto(new Producto("Manzana", 100, "Verdulería", 1500.00));
+        service.creaProducto(new Producto("Pan Lactal", 400, "Panificados", 5600.00));
 
     }
 
